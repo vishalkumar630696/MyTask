@@ -7,7 +7,7 @@ const Posts = () => {
     // 🔹 FETCH POSTS FUNCTION
     const fetchPosts = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/posts");
+            const res = await axios.get(`${import.meta.env.VITE_API_UR}/api/posts`);
             setPosts(res.data);
         } catch (error) {
             console.log(error);
@@ -22,7 +22,7 @@ const Posts = () => {
     // 🔹 DELETE POST
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+            await axios.delete(`${import.meta.env.VITE_API_UR}/api/posts/${id}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -42,7 +42,7 @@ const Posts = () => {
 
         try {
             await axios.put(
-                `http://localhost:5000/api/posts/${id}`,
+                `${import.meta.env.VITE_API_UR}/${id}`,
                 {
                     title: newTitle,
                     content: newContent,
